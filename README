@@ -1,0 +1,11 @@
+用处:
+	用于处理Django下载大文件用到的FileWrapper和gzip中间件冲突, 导致下载空文件的问题
+	如果不在一起使用则没有这个问题
+
+用法:
+	修改settings.py, 替换gzip中间件为重写后的中间件
+
+
+原因:
+	FileWrapper是一个迭代器
+	gzip中如果读到由FileWrapper实例化的文件迭代器对象, 就会进行迭代
